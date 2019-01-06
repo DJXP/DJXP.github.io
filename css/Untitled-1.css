@@ -1,5 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
+.avn{
+	position: absolute;
+	top: 350px;
+	right: 700px;
+}
  #firstpage {padding-top:50px; width:100%;height:1200px;}
  #part1 {
 	 padding-top:50px; 
@@ -168,7 +173,7 @@
 	top:180px;
 	width: 60%;
 	height: 500px;
-	background-image: url()
+	background-image:url
 /*	background-color: aqua;*/
 
 }
@@ -179,7 +184,6 @@
 	width: 60%;
 	height: 350px;
 	background-color:#524D4B;
-	background-image: url(../image/img8.png);
 	opacity:0.6;
 
 }
