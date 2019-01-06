@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>多条线</title>
+		<style type="text/css">
+			body {
+				background-color: white;
+				font-family: Helvetica, Arial, sans-serif;
+			}
+			h1 {
+				font-size: 24px;
+				margin: 0;
+			}
+			p {
+				font-size: 14px;
+				margin: 10px 0 0 0;
+			}
+			svg {
+				background-color: white;
+			}
+			path.line {
+				fill: none;
+				stroke: orange;
+				stroke-width: 1px;
+			}
+			circle, path:hover {
+				cursor: pointer;
+			}
+			.axis path,
+			.axis line {
+				fill: none;
+				stroke: black;
+				stroke-width: 1px;
+			}
+			.axis text {
+				font-family: sans-serif;
+				font-size: 11px;
+			}
+			text.linelabel {
+				font-size: 9pt;
+				fill: #555555;
+			}
+			/*CSS about mouse event*/
+			#focused {
+				stroke: black;
+				stroke-width: 2px;
+			}
+			text.hidden {
+				display: none;
+			}
+			text.bolder {
+				font-weight: bolder;
+			}
+			.tooltip {
+                position: absolute;
+                z-index: 10;
+            }
+            .tooltip p {
+                background-color: white;
+                color: steelblue;
+                border: steelblue 1px solid;
+                padding: 2px;
+			}
+		</style>
+	</head>
+	<body>
+
+		<h1>各省份工读学校在校生数量</h1>
+
+		
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.1.0/d3.js"></script>
+		<script type="text/javascript">
+			var fullwidth = 750;
+			var fullheight = 320;
+			var margin = { top: 20, right: 120, bottom: 20, left: 70 };
+			var width = fullwidth - margin.left - margin.right;
+			var height = fullheight - margin.top - margin.bottom;
+			var timeParse = d3.timeParse("%Y");
+			var timeFormat = d3.timeFormat("%Y年");
+			var xScale = d3.scaleTime()
+								.range([0, width]);
+			var yScale = d3.scaleLinear()
+								.range([0, height]);
+			var xAxis = d3.axisBottom(xScale)
+							.tickFormat(function(d) {
+								return timeFormat(d);
+							})
+							.ticks(5);
+			var yAxis = d3.axisLeft(yScale);
+			var line = d3.line()
+//			    .interpolate("monotone")
+//			为啥不行啊哭了
+				.x(function(d) {
+					return xScale(timeParse(d.year));
+				})
+//			这个地方的year是哪来的
+				.y(function(d) {
+					return yScale(+d.amount);
+				});
+//			amount也是任意写的嘛
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", fullwidth)
+						.attr("height", fullheight)
+						.append("g")
+						.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+			d3.csv("各省份数据.csv", function(data) {
+				var years = d3.keys(data[0]).slice(0, 7-2); 
+//				为什么是0到几？
+				var dataset = [];
+				data.forEach(function(d){
+				var myEmissions = [];
+					years.forEach(function(y){
+						if (d[y]) { 
+							myEmissions.push({
+								year: y,
+								amount: + d[y]
+							})
+						}
+					})
+//					y是任意的吧，x也可以？
+					dataset.push({
+						location: d.地区,
+						emissions: myEmissions
+					})
+				})
+				xScale.domain(
+					d3.extent(years, function(d) {
+						return timeParse(d);
+					}));
+				yScale.domain([2600,
+					0
+				]);
+				var groups = svg.selectAll("g")
+					.data(dataset)
+					.enter()
+					.append("g");
+				groups.selectAll("path")
+					.data(function(d) { 
+						return [ d.emissions ]; 
+					})
+					.enter()
+					.append("path")
+					.attr("class", "line")
+					.attr("d", line);
+//label
+				groups.append("text")
+					.attr("x", function(d) {
+						if (d.emissions.length != 0) {
+					  	var lastYear = d.emissions[d.emissions.length-1].year;
+					  	return xScale(timeParse(lastYear));
+					  }
+					})
+					.attr("y", function(d) {
+						if (d.emissions.length != 0) {
+					  	var lastAmount = d.emissions[d.emissions.length-1].amount;
+					  	return yScale(lastAmount);
+						}
+					})
+					.attr("dx", "3px")
+					.attr("dy", "3px")
+					.text(function(d) {
+						if (d.emissions.length != 0) {
+							var lastAmount = d.emissions[d.emissions.length-1].amount;
+							if (+lastAmount > 200) {
+								return d.location;
+							}
+						}
+					})
+					.attr("class", "linelabel");
+//3. 在group上加mouseover
+				
+				groups.on("mouseover", mouseoverGroup)
+					  .on("mouseout", mouseoutGroup)
+//4. circles on lines
+				var radius = 3;
+				var circles = groups.selectAll("circle")
+					.data(function(d) { 
+								return d.emissions; 
+					})
+					.enter()
+					.append("circle");
+				circles.attr("cx", function(d) {
+						return xScale(timeParse(d.year));
+					})
+					.attr("cy", function(d) {
+						return yScale(d.amount);
+					})
+					.attr("r", radius)
+					.attr("opacity", 0)
+				    .attr("fill",function(d){
+				if(d.地区==="新疆 Xinjiang"){return"yellow";}else{return"#59253F";}
+			     });
+//				这个颜色并没有什么卵用
+				circles
+					.on("mouseover", mouseoverCircle)
+					.on("mousemove", mousemoveCircle)
+					.on("mouseout",	mouseoutCircle);
+// axis here: 
+				svg.append("g")
+					.attr("class", "x axis")
+					.attr("transform", "translate(0," + height + ")")
+					.call(xAxis);
+				svg.append("g")
+					.attr("class", "y axis")
+					.call(yAxis);
+			}); 
+//3.2. mouseover on groups:
+	
+			function mouseoverGroup(d){
+				// the "this" is the g parent node.  That means we can select it, and then select
+				// the child nodes and style the]m as we want for the hover effect!
+				d3.select(this).select("path").attr("id", "focused"); // overrides the class
+				d3.select(this).select("text").classed("hidden", false);  // show it if "hidden"
+				d3.select(this).select("text").classed("bolder", true);
+			}
+			function mouseoutGroup(d){
+				d3.select(this).select("path").attr("id", null); // remove the focus style
+				d3.select(this).select("text").classed("bolder", false); // remove the bolding on label
+			}
+//4.2. mouseover on circles:
+			function mouseoverCircle(d) {
+				d3.select(this)
+					.transition()
+					.style("opacity", 1);
+				// 给circle所在的line加highlight
+				// var lineid = d3.select(this).attr("id");
+				// d3.select("path#" + lineid).classed("focused", true).classed("unfocused", false);
+				tooltip
+					.style("display", null) 
+					.html(
+						"<p>省份: " + d.地区 +
+						"<br>年份: " + d.year +
+						"<br>在校生人数： " + d.amount + " 人</p>"
+						);
+			}
+			function mousemoveCircle(d) {
+				tooltip
+					.style("top", (d3.event.pageY - 10) + "px" )
+					.style("left", (d3.event.pageX + 10) + "px");
+				}
+			function mouseoutCircle(d) {
+				d3.select(this)
+					.transition()
+					.style("opacity", 0)
+					.attr("r", 3);
+				d3.selectAll("path.line").classed("unfocused", true).classed("focused", false);
+		    	tooltip.style("display", "none");  
+		    }
+		</script>
+
+	</body>
+</html>
