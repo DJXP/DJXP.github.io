@@ -1,0 +1,312 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>工读学校——拯救悬崖的雏鹰</title>
+<link href="css/Untitled-1.css" rel="stylesheet" type="text/css">
+</head>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<body>
+	
+	<div class="project">
+		<video class="head_video" autoplay loop muted >
+  			<source src="video/工读学校背景.mp4" type="video/mp4">
+	        </video>
+		    <img src="image/背景紫灰色透明.png" class="head_video" alt=""/> 
+		 
+	  <div id="firstpage">
+		  <div style="position: absolute;left: 430px;top:250px;">
+           <img src="image/题目.png" width="670" height="228" alt=""/></div>
+		<p id="brief" >2018年12月31日，湖南衡南。13岁的罗某（男）因家庭纠纷用锤子将其父母锤伤致死，后逃离现场。<br><br>
+
+2018年12月2日，湖南沅江。12岁男童吴某康因不满母亲管教，持刀将母亲砍了20余刀，致其当场死亡。判收容教养三年。<br><br>
+
+2018年6月，湖北孝感。14岁黄某抢劫，持剪刀刺伤女生张某。警方撤销案件、协调未果。<br><br>
+
+2012年4月，广西。13岁少女覃某因不满同学外貌漂亮，肢解同窗好友。判收容教养三年。<br><br>
+
+2018年12月连续两起未成年人犯罪案件，再次把未成年人犯罪问题推到舆论的风口浪尖。<br><br><br><br><br><br>
+</p>
+		  </div>		
+	 
+		
+<!--
+		<div id="introduction">
+		</div>
+-->
+		
+		<div id="part1">
+			<div style="position: absolute; left: 70px; top: 50px;">
+		    <img src="image/图表标题1.png" width="478" height="48" alt=""/> </div>
+			<div id="chart1">
+				 <div id="form" style="position: absolute;left:50px;top:-20px;">
+            <label><input type="radio" name="mode" value="bycount" checked>罪犯数量</label>
+            <label><input type="radio" name="mode" value="bypercent" >各年龄段占比</label>
+                </div>
+              <div id="chart"></div>
+			</div>
+		  <div id="b1">
+				<p class="nor">
+					<br><br><br><br><br><br>1997-2016年，我国刑事案件罪犯总数增加，25岁以下的青少年罪犯,在数量上整体变化不大，在占比上略有减少，但依然占较大比重，青少年犯罪现象不容忽视。
+				</p>
+				<p class="foot">
+					<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>数据来源: 《中国社会统计年鉴》
+				</p>
+			</div>
+			
+		</div>
+<!--		part2 引出工读学校及其历史-->
+		<div id="part2">
+			
+			<div id=part2_intr >
+				<p id="brief" style="top: 10%; text-align:inherit; font-size: 14px;letter-spacing:1px;">工读学校是为教育挽救有违法犯罪行为的青少年学生开办的学校。<br><br>工读学校发展与时俱进，在历史上的各个阶段，都发挥了重要的社会作用。<br><br>1955—1966年，新中国成立后，社会上广泛存在着流浪儿、孤儿以及各种轻度违法犯罪的青少年，为此，新中国借鉴了苏联的“工学团”模式，于1955 年创造性地创办了中国第一所工读学校——北京市温泉学校。
+<br><br>1966—1982年，“文化大革命”使全国工读学校遭到了前所未有的冲击和破坏。“文化大革命”后，党和政府高度重视工读学校，颁发一系列文件。劳动教育是这一阶段工读教育的一大特色，对工读学生的生存与发展都起到了积极的作用。
+<br><br>1982—1992年，社会治安逐渐好转，青少年违法犯罪现象得到有效遏制，一些城市的工读学校开始撤并或者停止招生，工读学校首次面临招生难和就业难的问题。工读学校开始以“文化教育”为突破口，开展了多种形式的教学实验和探索。<br><br>1992—2015年,这一阶段工读学校面临了机遇与挑战并存.虽然工读学校的数量只剩下82 所，但是，也有新的工读学校相继成立。1992年在邓小平南巡讲话精神的鼓舞下，工读教育推出了一系列的改革新举措，取得了良好的社会效益。
+
+<br><br>
+					现今工读学校状况如何，工读学校里面收容的是一群怎样的学生，他们的生活又如何呢？<br><br><br><br>
+</p>
+			</div>
+			
+			
+			
+			
+		</div>
+		
+<!--		part3百度贴吧-->
+	  <div id="part3">
+			<div style="position: absolute; left: 70px; top: 100px;">
+	       <img src="image/图表标题2.png" width="564" height="54" alt=""/></div>
+		<div id="chart2">
+			
+				<label for="CheckboxGroup1_0">
+				  <input name="cixing" type="radio" id="cixing_0" value="a" checked="checked">
+				  形容词</label>
+				
+				<label>
+				  <input type="radio" name="cixing" value="v" id="cixing_1">
+			  动词</label>
+				
+				<label>
+				  <input type="radio" name="cixing" value="n" id="cixing_2">
+				  名词</label>
+				<br>
+<!--
+		<label>
+	      <input name="CheckboxGroup1" type="checkbox" id="CheckboxGroup1_0" value="2j" checked="checked">
+	      积极</label>
+				 
+				  <label>
+				    <input type="checkbox" name="CheckboxGroup1" value="1x" id="CheckboxGroup1_1">
+				    消极</label>
+				  
+				  <label>
+				    <input type="checkbox" name="CheckboxGroup1" value="0z" id="CheckboxGroup1_2">
+				    中性</label>
+				  
+-->
+		    <div id="buttons">
+         <div id="menu">
+        <select>
+        <option value="2013">形容词</option>
+        <option value="2014">动词</option>
+        <option value="2015">名词</option>
+			 
+		
+        </select>
+    </div>
+			</div>
+				<div id="chart40">
+					<p><a href="修改2.html">chart看这里吧。</a>这是我放不进来的图，我最后的倔强。输汉字还是乱码，所以标签只能打拼音了。点上面的单选按钮右面的文字有交互。</p>
+        </div>
+        </div>
+		  <div id="b2_a" class="show_cixing">
+				<p class="nor2">
+					<br><br><br><br><br><br>百度贴吧里面的工读学校吧，是工读学校学生在网络上聚集的社区之一，工读学校的学生会在工读学校吧就某些问题进行讨论，分析他们的语言和用词特点，可以推断他们的性格和心理特征。<br><br>点击按钮可以查看“形容词”、“动词”、“名词”的词频前20分布情况。<br><br><br>左图显示的是形容词词频分布，“优秀”和“逍遥”的出现频率最高，但“悲哀”、“淘气”、“狠”这一类消极和贬义意味的词还是占大多数。
+				</p>
+				
+		</div>
+		  <div id="b2_v" class="show_cixing" style="display:none">
+				<p class="nor2">
+					<br><br><br><br><br><br><br>左图显示的是动词词频分布，“加油”词频最高，但并不明显，大部分都是有暴力倾向的词汇，如“打人”、“骂人”、“干仗”、“打死”、“打架”等等。
+				</p>
+				
+		</div>
+		  <div id="b2_n" class="show_cixing" style="display:none">
+				<p class="nor2">
+					<br><br><br><br><br><br><br><br>左图显示的是名词词频分布，名词的倾向性不明显，与教育相关的词汇出现较多，“老师”出现538次最多，家长、朋友分别位于第16、17位。
+				</p>
+				
+		
+	  </div>
+		</div>
+<!--		part4工读学校学生一天-->
+	  <style>
+		  .change_pic{
+			  display: none;
+		  }
+	  </style>
+	  <div id="part4">
+			<div class="picture change_pic p1">
+				<img src="image/p1.png" width="700" height="400" alt=""/> 
+			</div>
+			<div class="picture change_pic p2">
+				<img src="image/p2.png" width="700" height="400" alt=""/> 
+			</div>
+			<div class="picture change_pic p3">
+				<img src="image/p3.png" width="700" height="400" alt=""/> 
+			</div>
+			<div class="picture change_pic p4">
+				<img src="image/p4.png" width="700" height="400" alt=""/> 
+			</div>
+			<div class="picture change_pic p5">
+				<img src="image/p5.png" width="700" height="400" alt=""/> 
+			</div>
+			<div class="picture change_pic p6">
+				<img src="image/p6.png" width="700" height="400" alt=""/> 
+			</div>
+			<div class="picture change_pic p7">
+				<img src="image/p7.png" width="700" height="400" alt=""/> 
+			</div>
+			<div class="picture change_pic p8">
+				<img src="image/p8.png" width="700" height="400" alt=""/> 
+			</div>
+			<div class="picture change_pic p9">
+				<img src="image/p9.png" width="700" height="400" alt=""/> 
+		  </div>
+		<div id="b3_1">
+				<p class="nor2">
+					<br><br><br>工读学校的真实生活情况，又是怎样的呢？<br><br>小叶今年25岁，是南京信息工程大学2016届毕业生，现在是摩拜的城市经理，很少有人知道，15年前，他曾经因为逃学、打架斗殴被送进工读学校读初中。回忆工读学校的生活，他感慨颇多：<br><br>
+“那会儿工读学校的学生来头五花八门，有网瘾比较厉害的、有逃学的、有调皮捣蛋的、严重的还有持刀伤人的、强奸的，总之都是学校不想要、家长没时间管或者管不了的孩子；我前段时间回母校看老师，老师告诉我，现在进工读学校的孩子，恶性的原因比较少了，基本上都是因为打游戏或者不爱学习。<br><br>
+其实，大部分来工读学校的孩子，都有一定的家庭问题：父母离异、父母关系不和、父母常年在外、父母行为不良（赌博、嫖娼等等），有的孩子的家长可能就是罪犯。
+
+				</p>
+				
+			</div>
+		  <div id="b3_2">
+				<p class="nor2">
+					<br><br><br>刚进工读学校时，学校会组织“放包袱”，大家写下自己过去犯过的错误，丢掉重新开始。
+
+				</p>
+				
+			</div>
+		  <div id="b3_3">
+				<p class="nor2">
+					<br><br><br>工读学校的生活是军事化、部队化的，时间安排规律且严格。每天有晨跑，会组织站军姿、蛙跳这些体能训练。
+
+				</p>
+				
+			</div>
+		  <div id="b3_4">
+				<p class="nor2">
+					<br><br><br>学校每周都会有1-2节的心理课，有专门的教室，装修得不错，有好多的玩具、发泄袋、拼图，老师会讲很多很多东西，会组织看这一方面的电影。
+
+				</p>
+				
+			</div>
+		  <div id="b3_5">
+				<p class="nor2">
+					<br><br><br>去工读学校之前，我是学校的差生，学校和同学都会有蛮多排挤的，也没有什么朋友。在工读学校，我更多的时候发现我跟大家都是一样的、是同类人，老师也不会刻意的去打压一个学生。
+
+				</p>
+				
+			</div>
+		  <div id="b3_6">
+				<p class="nor2">
+					<br><br><br>学校的住宿和食堂的条件都是很好，每顿一个餐盘有三四个菜，晚上还会有宵夜。
+				</p>
+				
+			</div>
+		  <div id="b3_7">
+				<p class="nor2">
+					<br><br><br>体罚是常有的事，但是老师们也从不吝惜称赞，学校每学期都会组织表彰大会评选“五星学生”，那会儿得奖状我现在还留着呢。
+
+				</p>
+				
+			</div>
+		  <div id="b3_8">
+				<p class="nor2">
+					<br><br><br>学校的兴趣小组还是很多的，我那个时候有代表学校参加全国的无人机大赛。学校其他的活动，比如：无线电，弹琴、舞蹈、素描、写作、唱歌等等，都会有。
+
+				</p>
+				
+			</div>
+		  <div id="b3_9">
+				<p class="nor2">
+					<br><br><br>我觉得大部分学生在工读学校，还是有改变的、会变好的。离校之后很多同学都直接谋生计了，做高利贷、夜店、纹身的很多，也有很多做了外卖小哥、快递员、城管、工厂工人，还有从军的，也有一部分去了公司上班。<br><br>我选择了继续读书，最后考上了大学。大学那会儿跟他们聚会，因为班里只有我一个人上了大学，同学们还会跟我说要好好上学，不要像他们一样开始谋生计。<br><br>大学毕业开始找工作，工读学校的经历对我来说并没有什么心理负担，因为很少有人关注你的初中是在什么学校上的。<br><br>两年前班里的同学建了微信群，平时也会聊聊天，也会出来喝喝酒。我有一个工读学校同学现在在做高利贷，收入很高，有一次聚会我就跟他讲，要不我不要我的工作了，跟你干吧，他说，我是大学生毕业，要做堂堂正正的工作，拒绝让我加入。”
+</p>
+				
+			</div>
+	  </div>
+	  
+<!--		工读学校现状地图-->
+	  <div id="part5">
+			<div style="position: absolute; left: 70px; top: 100px;">
+           <img src="image/图表标题3.png" width="482" height="55" alt=""/></div>
+			<div id="chart3">
+				<p style="position: absolute; top: -35px;"><a href="各省份.html">chart看这里吧。</a>这也是我放不进来的图，我最后的倔强。</p>
+         
+                </div>
+              <div id="chart5">
+				<p style="position: absolute; top: -35px;"><a href="map.html">chart看这里吧。</a>这还是我放不进来的图，我最后的倔强。</p>
+         
+                </div>
+			
+		  <div id="b5">
+				<p class="nor2">
+					<br><br><br><br><br>而现在，工读学校建设进入瓶颈期。<br><br>由于各省份的教学水平，和社会发展状况不同，工读学校在个省份的分布一直以来就很不均。<br><br>近年来，随着社会治安的稳定，社会观念的转变，越来越多的问题学生不愿进入工读学校这一类特殊教育的学校，工读学校招生难，在校生数量整体上大幅下降，随之而来的就是工读学校数量减少。<br><br>另一方面，工读学校由于是寄宿学校，再加上学生管理难度大，工读学校教师待遇偏低，社会地位不高，工作累、压力大，许多工读学校老师纷纷离职。很多省份的工读学校教师数量甚至为零。<br><br>工读学校招生和发展问题成为了棘手的问题。<br><br>历史上的各个阶段工读学校都发挥着不可忽视的重要作用。在新时期、新阶段，如何建设好工读学校，搭建好问题学生的教育环境，让这些尚未懂事的雏鹰悬崖勒马，值得思考。
+				</p>
+
+				<p class="foot">
+					<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>编辑：徐鹏<br>数据来源：中华人民共和国教育部、网络抓取、《中国社会统计年鉴》 <br><br>文字部分参考知网和采访<br>部分图片来自网络 
+				</p>
+
+			</div>
+		
+		</div>
+		
+<!--		媒体的相关报道-->
+		
+	  <div id="part6">
+<!--			<div style="position: absolute; left: 70px; top: 100px;"><img src="image/图表标题4.png" width="232" height="55" alt=""/></div>-->
+			<div id="chart4">
+				
+         
+                </div>
+              
+			
+<!--
+		  <div id="b6">
+				<p class="nor">
+					<br><br><br><br><br><br><br><br><br>近年来，工读学校数量减少，教师数量减少。<br><br>工读学校招生难，
+					工读学校教师待遇偏低，社会地位不高，工作累、压力大等问题逐渐暴露。
+				</p>
+				<p class="foot">
+					<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><a href="http://www.moe.gov.cn/s78/A03/moe_560/moe_2896/moe_2907/">数据来源: 中华人民共和国教育部</a>
+				</p>
+			</div>
+-->
+		
+		</div>
+		<div id="end">
+		</div>
+		
+		
+	
+	
+	</div>
+	</div>
+	<script type="text/javascript" src="js/c2.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/chart1.js"></script>
+	<script type="text/javascript" src="js/form.js"></script>
+</body>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.1.0/d3.js"></script>
+    <!-- jquery线上lib -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<script type="text/javascript">
+</script>
+</html>
