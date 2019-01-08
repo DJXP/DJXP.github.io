@@ -37,6 +37,10 @@
 				font-family: sans-serif;
 				font-size: 11px;
 			}
+			.in{
+				font-size: 9pt;
+				fill: #555555;
+			}
 			text.linelabel {
 				font-size: 9pt;
 				fill: #555555;
@@ -68,8 +72,12 @@
 
 		<h1>各省份工读学校在校生数量</h1>
 
+<p class="in" style="position: absolute; top: 53px;left:90px;">新疆</p>		
+<p class="in" style="position: absolute; top: 150px;left:90px;">上海</p>
+<!--<p class="in" style="position: absolute; top: 170px;left:90px;">辽宁</p>		-->
 		
-
+		
+		
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.1.0/d3.js"></script>
 		<script type="text/javascript">
 			var fullwidth = 750;
@@ -106,6 +114,10 @@
 						.attr("height", fullheight)
 						.append("g")
 						.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+			var tooltip = d3.select("body")
+    .append("div")
+    .attr("class", "tooltip");
+
 			d3.csv("各省份数据.csv", function(data) {
 				var years = d3.keys(data[0]).slice(0, 7-2); 
 //				为什么是0到几？
@@ -206,10 +218,17 @@
 				svg.append("g")
 					.attr("class", "y axis")
 					.call(yAxis);
+				
+				
+				var mytoollip = svg.selectAll(".path")
+                .on("mouseover", mouseoverFunc) 
+                .on("mousemove", mousemoveFunc) 
+                .on("mouseout", mouseoutFunc); 
+				
+				
 			}); 
 //3.2. mouseover on groups:
-	
-			function mouseoverGroup(d){
+	function mouseoverGroup(d){
 				// the "this" is the g parent node.  That means we can select it, and then select
 				// the child nodes and style the]m as we want for the hover effect!
 				d3.select(this).select("path").attr("id", "focused"); // overrides the class
@@ -249,6 +268,7 @@
 				d3.selectAll("path.line").classed("unfocused", true).classed("focused", false);
 		    	tooltip.style("display", "none");  
 		    }
+			
 		</script>
 
 	</body>
