@@ -134,7 +134,7 @@
 					})
 //					y是任意的吧，x也可以？
 					dataset.push({
-						location: d.地区,
+						location: d.loca,
 						emissions: myEmissions
 					})
 				})
@@ -176,8 +176,8 @@
 					.text(function(d) {
 						if (d.emissions.length != 0) {
 							var lastAmount = d.emissions[d.emissions.length-1].amount;
-							if (+lastAmount > 200) {
-								return d.location;
+							if (+lastAmount > 1000) {
+								return d.loca;
 							}
 						}
 					})
@@ -203,7 +203,7 @@
 					.attr("r", radius)
 					.attr("opacity", 0)
 				    .attr("fill",function(d){
-				if(d.地区==="新疆 Xinjiang"){return"yellow";}else{return"#59253F";}
+				if(d.loca==="Xinjiang"){return"yellow";}else{return"#59253F";}
 			     });
 //				这个颜色并没有什么卵用
 				circles
@@ -250,7 +250,7 @@
 				tooltip
 					.style("display", null) 
 					.html(
-						"<p>省份: " + d.地区 +
+						"<p>省份: " + d.loca +
 						"<br>年份: " + d.year +
 						"<br>在校生人数： " + d.amount + " 人</p>"
 						);
